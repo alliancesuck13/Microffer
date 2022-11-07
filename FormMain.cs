@@ -56,5 +56,64 @@ namespace Microffer
             if (Application.OpenForms["FormAbout"] == null)
                 new FormAbout().Show();
         }
+
+        private void labelMinimize_MouseClick(object sender, MouseEventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void labelMinimize_MouseEnter(object sender, EventArgs e)
+        {
+            labelMinimize.ForeColor = Color.FromArgb(255, 255, 255);
+        }
+
+        private void labelMinimize_MouseLeave(object sender, EventArgs e)
+        {
+            labelMinimize.ForeColor = Color.FromArgb(86, 101, 114);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            notifyIconDefault.BalloonTipTitle = "Microffer";
+            notifyIconDefault.BalloonTipText = "Приложение свернуто";
+        }
+
+        private void notifyIconDefault_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            notifyIconDefault.Visible = false;
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIconDefault.Visible = true;
+                notifyIconDefault.ShowBalloonTip(1000);
+            }
+            else if (FormWindowState.Normal == WindowState)
+            {
+                notifyIconDefault.Visible = false;
+            }
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FormAbout"] == null)
+                new FormAbout().Show();
+        }
+
+        private void microfferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Maximized;
+        }
     }
 }
