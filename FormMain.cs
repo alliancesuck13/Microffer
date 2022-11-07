@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using NAudio.CoreAudioApi;
 
 namespace Microffer
 {
     public partial class FormMain : FormShadow
     {
+        CoreMicMute micMute = new CoreMicMute();
         public FormMain()
         {
             InitializeComponent();
@@ -113,7 +115,21 @@ namespace Microffer
         private void microfferToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Show();
-            WindowState = FormWindowState.Maximized;
+        }
+
+        private void buttonMicOff_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonMicOff.ForeColor = Color.FromArgb(155, 178, 197);
+        }
+        private void buttonMicOff_Click(object sender, EventArgs e)
+        {
+            micMute.SetMute(true);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                
         }
     }
 }

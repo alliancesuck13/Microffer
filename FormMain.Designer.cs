@@ -36,9 +36,12 @@
             this.labelHeader = new System.Windows.Forms.Label();
             this.notifyIconDefault = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.microfferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.microfferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonMicOff = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -117,12 +120,19 @@
             this.оПрограммеToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(139, 70);
+            // 
+            // microfferToolStripMenuItem
+            // 
+            this.microfferToolStripMenuItem.Name = "microfferToolStripMenuItem";
+            this.microfferToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.microfferToolStripMenuItem.Text = "Microffer";
+            this.microfferToolStripMenuItem.Click += new System.EventHandler(this.microfferToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -133,17 +143,48 @@
             this.выходToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.выходToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.выходToolStripMenuItem.Text = "Закрыть";
             this.выходToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
-            // microfferToolStripMenuItem
+            // buttonMicOff
             // 
-            this.microfferToolStripMenuItem.Name = "microfferToolStripMenuItem";
-            this.microfferToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.microfferToolStripMenuItem.Text = "Microffer";
-            this.microfferToolStripMenuItem.Click += new System.EventHandler(this.microfferToolStripMenuItem_Click);
+            this.buttonMicOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.buttonMicOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMicOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMicOff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
+            this.buttonMicOff.Location = new System.Drawing.Point(100, 88);
+            this.buttonMicOff.Name = "buttonMicOff";
+            this.buttonMicOff.Size = new System.Drawing.Size(75, 23);
+            this.buttonMicOff.TabIndex = 1;
+            this.buttonMicOff.TabStop = false;
+            this.buttonMicOff.Text = "Выключить";
+            this.buttonMicOff.UseVisualStyleBackColor = false;
+            this.buttonMicOff.Click += new System.EventHandler(this.buttonMicOff_Click);
+            this.buttonMicOff.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMicOff_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
+            this.label1.Location = new System.Drawing.Point(97, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(100, 118);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormMain
             // 
@@ -151,6 +192,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(275, 174);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonMicOff);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -167,6 +211,7 @@
             this.panelHeader.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -181,6 +226,9 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem microfferToolStripMenuItem;
+        private System.Windows.Forms.Button buttonMicOff;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
