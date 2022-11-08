@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -41,6 +42,11 @@ namespace Microffer
         private void labelLeaveAbout_MouseLeave(object sender, EventArgs e)
         {
             labelLeaveAbout.ForeColor = Color.FromArgb(86, 101, 114);
+        }
+
+        private void labelAuthorName_MouseClick(object sender, MouseEventArgs e)
+        {
+            Process.Start("https://fe2ck.t.me");
         }
     }
 }

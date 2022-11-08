@@ -37,6 +37,7 @@
             this.labelTextAbout = new System.Windows.Forms.Label();
             this.labelAutor = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
+            this.labelAuthorName = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,12 +110,11 @@
             this.labelTextAbout.BackColor = System.Drawing.Color.Transparent;
             this.labelTextAbout.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTextAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
-            this.labelTextAbout.Location = new System.Drawing.Point(2, 27);
+            this.labelTextAbout.Location = new System.Drawing.Point(14, 28);
             this.labelTextAbout.Name = "labelTextAbout";
-            this.labelTextAbout.Size = new System.Drawing.Size(206, 54);
+            this.labelTextAbout.Size = new System.Drawing.Size(173, 44);
             this.labelTextAbout.TabIndex = 2;
-            this.labelTextAbout.Text = "Microffer — это программа, созданная для отключения/включения микрофона в системе" +
-    "";
+            this.labelTextAbout.Text = "Microffer — это программа, созданная для отключения/включения звука";
             this.labelTextAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelAutor
@@ -122,11 +122,11 @@
             this.labelAutor.BackColor = System.Drawing.Color.Transparent;
             this.labelAutor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelAutor.Location = new System.Drawing.Point(3, 81);
+            this.labelAutor.Location = new System.Drawing.Point(6, 77);
             this.labelAutor.Name = "labelAutor";
             this.labelAutor.Size = new System.Drawing.Size(74, 20);
             this.labelAutor.TabIndex = 3;
-            this.labelAutor.Text = "Автор: fe2ck";
+            this.labelAutor.Text = "Автор:";
             this.labelAutor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelVersion
@@ -134,12 +134,26 @@
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelVersion.Location = new System.Drawing.Point(139, 81);
+            this.labelVersion.Location = new System.Drawing.Point(126, 77);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(58, 20);
+            this.labelVersion.Size = new System.Drawing.Size(71, 20);
             this.labelVersion.TabIndex = 4;
-            this.labelVersion.Text = "Версия: 0";
+            this.labelVersion.Text = "Версия: 0.5a";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelAuthorName
+            // 
+            this.labelAuthorName.BackColor = System.Drawing.Color.Transparent;
+            this.labelAuthorName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelAuthorName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAuthorName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
+            this.labelAuthorName.Location = new System.Drawing.Point(43, 77);
+            this.labelAuthorName.Name = "labelAuthorName";
+            this.labelAuthorName.Size = new System.Drawing.Size(37, 20);
+            this.labelAuthorName.TabIndex = 5;
+            this.labelAuthorName.Text = "fe2ck";
+            this.labelAuthorName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelAuthorName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.labelAuthorName_MouseClick);
             // 
             // FormAbout
             // 
@@ -147,6 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(200, 100);
+            this.Controls.Add(this.labelAuthorName);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.labelAutor);
             this.Controls.Add(this.labelTextAbout);
@@ -174,5 +189,6 @@
         private System.Windows.Forms.Label labelTextAbout;
         private System.Windows.Forms.Label labelAutor;
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.Label labelAuthorName;
     }
 }

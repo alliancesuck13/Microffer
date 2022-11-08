@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.labelCopy = new System.Windows.Forms.Label();
+            this.labelSettings = new System.Windows.Forms.Label();
             this.labelMinimize = new System.Windows.Forms.Label();
             this.labelExit = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
@@ -39,10 +41,10 @@
             this.microfferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonMicOff = new System.Windows.Forms.Button();
+            this.buttonSoundOff = new System.Windows.Forms.Button();
             this.labelAudioStatus = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +52,8 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.panelHeader.Controls.Add(this.labelCopy);
+            this.panelHeader.Controls.Add(this.labelSettings);
             this.panelHeader.Controls.Add(this.labelMinimize);
             this.panelHeader.Controls.Add(this.labelExit);
             this.panelHeader.Controls.Add(this.labelHeader);
@@ -58,6 +62,34 @@
             this.panelHeader.Size = new System.Drawing.Size(288, 34);
             this.panelHeader.TabIndex = 0;
             // 
+            // labelCopy
+            // 
+            this.labelCopy.AutoSize = true;
+            this.labelCopy.BackColor = System.Drawing.Color.Transparent;
+            this.labelCopy.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(181)))), ((int)(((byte)(247)))));
+            this.labelCopy.Location = new System.Drawing.Point(87, 15);
+            this.labelCopy.Name = "labelCopy";
+            this.labelCopy.Size = new System.Drawing.Size(0, 13);
+            this.labelCopy.TabIndex = 4;
+            this.labelCopy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelSettings
+            // 
+            this.labelSettings.AutoSize = true;
+            this.labelSettings.BackColor = System.Drawing.Color.Transparent;
+            this.labelSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelSettings.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(114)))));
+            this.labelSettings.Location = new System.Drawing.Point(214, 14);
+            this.labelSettings.Name = "labelSettings";
+            this.labelSettings.Size = new System.Drawing.Size(16, 16);
+            this.labelSettings.TabIndex = 3;
+            this.labelSettings.Text = "⛭";
+            this.labelSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSettings.MouseEnter += new System.EventHandler(this.labelSettings_MouseEnter);
+            this.labelSettings.MouseLeave += new System.EventHandler(this.labelSettings_MouseLeave);
+            // 
             // labelMinimize
             // 
             this.labelMinimize.AutoSize = true;
@@ -65,7 +97,7 @@
             this.labelMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelMinimize.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(114)))));
-            this.labelMinimize.Location = new System.Drawing.Point(232, 14);
+            this.labelMinimize.Location = new System.Drawing.Point(233, 14);
             this.labelMinimize.Name = "labelMinimize";
             this.labelMinimize.Size = new System.Drawing.Size(20, 16);
             this.labelMinimize.TabIndex = 2;
@@ -149,21 +181,21 @@
             this.выходToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
-            // buttonMicOff
+            // buttonSoundOff
             // 
-            this.buttonMicOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
-            this.buttonMicOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonMicOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMicOff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.buttonMicOff.Location = new System.Drawing.Point(100, 88);
-            this.buttonMicOff.Name = "buttonMicOff";
-            this.buttonMicOff.Size = new System.Drawing.Size(75, 23);
-            this.buttonMicOff.TabIndex = 1;
-            this.buttonMicOff.TabStop = false;
-            this.buttonMicOff.Text = "Выключить";
-            this.buttonMicOff.UseVisualStyleBackColor = false;
-            this.buttonMicOff.Click += new System.EventHandler(this.buttonMicOff_Click);
-            this.buttonMicOff.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMicOff_MouseDown);
+            this.buttonSoundOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.buttonSoundOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSoundOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSoundOff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
+            this.buttonSoundOff.Location = new System.Drawing.Point(100, 76);
+            this.buttonSoundOff.Name = "buttonSoundOff";
+            this.buttonSoundOff.Size = new System.Drawing.Size(75, 23);
+            this.buttonSoundOff.TabIndex = 1;
+            this.buttonSoundOff.TabStop = false;
+            this.buttonSoundOff.Text = "Выключить";
+            this.buttonSoundOff.UseVisualStyleBackColor = false;
+            this.buttonSoundOff.Click += new System.EventHandler(this.buttonSoundOff_Click);
+            this.buttonSoundOff.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSoundOff_MouseDown);
             // 
             // labelAudioStatus
             // 
@@ -171,22 +203,12 @@
             this.labelAudioStatus.BackColor = System.Drawing.Color.Transparent;
             this.labelAudioStatus.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAudioStatus.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelAudioStatus.Location = new System.Drawing.Point(88, 44);
+            this.labelAudioStatus.Location = new System.Drawing.Point(82, 44);
             this.labelAudioStatus.Name = "labelAudioStatus";
-            this.labelAudioStatus.Size = new System.Drawing.Size(99, 19);
+            this.labelAudioStatus.Size = new System.Drawing.Size(110, 19);
             this.labelAudioStatus.TabIndex = 2;
-            this.labelAudioStatus.Text = "Audio Status";
+            this.labelAudioStatus.Text = "Звук включен";
             this.labelAudioStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(100, 118);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -195,15 +217,25 @@
             this.label2.Size = new System.Drawing.Size(78, 134);
             this.label2.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
-            this.ClientSize = new System.Drawing.Size(275, 174);
+            this.ClientSize = new System.Drawing.Size(275, 133);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelAudioStatus);
-            this.Controls.Add(this.buttonMicOff);
+            this.Controls.Add(this.buttonSoundOff);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -236,10 +268,12 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem microfferToolStripMenuItem;
-        private System.Windows.Forms.Button buttonMicOff;
+        private System.Windows.Forms.Button buttonSoundOff;
         private System.Windows.Forms.Label labelAudioStatus;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelSettings;
+        private System.Windows.Forms.Label labelCopy;
     }
 }
 
