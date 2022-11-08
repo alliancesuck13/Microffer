@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Microffer.Core
@@ -105,6 +104,8 @@ namespace Microffer.Core
             {
                 key?.CreateSubKey(@"Software\Microffer\Hotkey")?.SetValue("UseHotkeys", "false");
             }
+
+            Close();
         }
     }
 }

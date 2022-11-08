@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
 [assembly: AssemblyTitle("Microffer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Приложение для отключения звука в системе")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("fe2ck")]
 [assembly: AssemblyProduct("Microffer")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("fe2ck")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

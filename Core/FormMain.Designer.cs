@@ -200,7 +200,7 @@
             this.buttonSoundOff.Size = new System.Drawing.Size(75, 23);
             this.buttonSoundOff.TabIndex = 1;
             this.buttonSoundOff.TabStop = false;
-            this.buttonSoundOff.Text = "Выключить";
+            this.buttonSoundOff.Text = "Отключить";
             this.buttonSoundOff.UseVisualStyleBackColor = false;
             this.buttonSoundOff.Click += new System.EventHandler(this.buttonSoundOff_Click);
             this.buttonSoundOff.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSoundOff_MouseDown);

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Microffer.Core;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.ServiceProcess;
 using System.Windows.Forms;
-using Microffer.Core;
 
 namespace Microffer
 {
     public partial class FormMain : FormShadow
     {
+
         public FormMain()
         {
             InitializeComponent();
@@ -68,7 +69,7 @@ namespace Microffer
                 buttonSoundOff.Text = "Включить";
             }
         }
-        
+
         // Поиск службы Audiosrv
         private static Func<ServiceController, bool> ServiceHandler()
         {
@@ -121,6 +122,11 @@ namespace Microffer
         {
             labelSettings.ForeColor = Color.FromArgb(86, 101, 114);
         }
+        private void labelSettings_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FormSettings"] == null)
+                new FormSettings().Show();
+        }
         #endregion
 
         #region [ Form ]
@@ -129,6 +135,12 @@ namespace Microffer
             if (e.KeyValue == (char)Keys.Escape)
             {
                 Application.Exit();
+            }
+
+            if (e.KeyValue == (char)Keys.Multiply)
+            {
+                ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
+                serviceControllerAudio.Stop();
             }
         }
 
@@ -264,10 +276,5 @@ namespace Microffer
         }
         #endregion
 
-        private void labelSettings_Click(object sender, EventArgs e)
-        {
-            if (Application.OpenForms["FormSettings"] == null)
-                new FormSettings().Show();
-        }
     }
 }
