@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.ServiceProcess;
 using System.Windows.Forms;
-using NAudio.CoreAudioApi;
 
 namespace Microffer
 {
@@ -123,13 +124,19 @@ namespace Microffer
         }
         private void buttonMicOff_Click(object sender, EventArgs e)
         {
-            micMute.SetMute(true);
+            ServiceController svc = ServiceController.GetServices().Single(ServiceHandler());
+            svc.Stop();
 
+        }
+
+        private static Func<ServiceController, bool> ServiceHandler()
+        {
+            return svc => svc.ServiceName == "Audiosrv";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-                
+            
         }
     }
 }

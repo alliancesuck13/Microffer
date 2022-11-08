@@ -1,12 +1,12 @@
-﻿using NAudio.CoreAudioApi;
-using System;
+﻿using System;
+using NAudio.CoreAudioApi;
 
 namespace Microffer
 {
     internal class CoreMicMute
     {
         // Запись найденных устройств
-        private MMDevice[] rgMicDevice;
+        public MMDevice[] rgMicDevice;
         int MaxMicro = 0;
 
         public CoreMicMute()
@@ -55,6 +55,5 @@ namespace Microffer
                 rgMicDevice[i].AudioEndpointVolume.Mute = mute;
             }
         }
-        
     }
 }

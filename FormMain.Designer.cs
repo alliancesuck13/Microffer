@@ -40,8 +40,9 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonMicOff = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelAudioStatus = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -164,17 +165,18 @@
             this.buttonMicOff.Click += new System.EventHandler(this.buttonMicOff_Click);
             this.buttonMicOff.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMicOff_MouseDown);
             // 
-            // label1
+            // labelAudioStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
-            this.label1.Location = new System.Drawing.Point(97, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAudioStatus.AutoSize = true;
+            this.labelAudioStatus.BackColor = System.Drawing.Color.Transparent;
+            this.labelAudioStatus.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAudioStatus.ForeColor = System.Drawing.Color.DarkGreen;
+            this.labelAudioStatus.Location = new System.Drawing.Point(88, 44);
+            this.labelAudioStatus.Name = "labelAudioStatus";
+            this.labelAudioStatus.Size = new System.Drawing.Size(99, 19);
+            this.labelAudioStatus.TabIndex = 2;
+            this.labelAudioStatus.Text = "Audio Status";
+            this.labelAudioStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
@@ -186,6 +188,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(13, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 134);
+            this.label2.TabIndex = 4;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,9 +202,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(275, 174);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelAudioStatus);
             this.Controls.Add(this.buttonMicOff);
             this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -227,8 +237,9 @@
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem microfferToolStripMenuItem;
         private System.Windows.Forms.Button buttonMicOff;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelAudioStatus;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
