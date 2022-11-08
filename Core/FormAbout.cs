@@ -29,6 +29,7 @@ namespace Microffer
                 labelExit.Text = "☓";
         }
 
+        #region [ Label events ]
         private void labelLeaveAbout_MouseClick(object sender, MouseEventArgs e)
         {
             Close();
@@ -48,5 +49,7 @@ namespace Microffer
         {
             Process.Start("https://fe2ck.t.me");
         }
+        #endregion
+
     }
 }

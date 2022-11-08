@@ -72,6 +72,7 @@ namespace Microffer
                 if (ClientRectangle == Rectangle.Empty)
                     return;
 
+                // 270 - угол наклона градиента
                 var lgb = new LinearGradientBrush(ClientRectangle, Color.Empty, Color.Empty, 270);
                 var cblend = new ColorBlend { Colors = new[] { color1, color1, color2, color2 }, Positions = new[] { 0, 0.5f, 0.8f, 1 } };
 

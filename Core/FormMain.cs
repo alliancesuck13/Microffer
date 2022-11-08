@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.ServiceProcess;
 using System.Windows.Forms;
+using Microffer.Core;
 
 namespace Microffer
 {
@@ -12,20 +13,28 @@ namespace Microffer
         public FormMain()
         {
             InitializeComponent();
+
+            // Реализация mutex
             if (!InstanceChecker.TakeMemory())
             {
                 labelCopy.Text = "Копия программы!";
+                labelCopy.Location = new Point(6, 16);
+                labelHeader.Text = String.Empty;
             }
 
             FormClosing += (s, a) => InstanceChecker.ReleaseMemory();
+            // Освобождение памяти при сворачивании в трей
             SizeChanged += (s, a) =>
             {
                 if (WindowState == FormWindowState.Minimized)
                     InstanceChecker.ReleaseMemory();
             };
 
+            // Покраска формы в нужный цвет 
+            // Этот метод дает возможность исправить баг с белой полоской внизу формы
             FormPaint(Color.FromArgb(14, 22, 33), Color.FromArgb(14, 22, 33));
 
+            // Перетаскивание панели и лейбла
             new List<Control> { panelHeader, labelCopy }.ForEach(x =>
             {
                 x.MouseDown += (s, a) =>
@@ -37,6 +46,7 @@ namespace Microffer
                 };
             });
 
+            // Замена крестика, если ОС Windows 7
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor <= 1)
                 labelExit.Text = "☓";
 
@@ -44,15 +54,22 @@ namespace Microffer
             if (serviceControllerAudio.Status.ToString() == "Running")
             {
                 labelAudioStatus.Text = "Звук включен";
+                notifyIconDefault.Text = "Microffer - звук включен";
+
             }
             else
             {
-                labelAudioStatus.Text = "Звук выключен";
+                labelAudioStatus.Text = "Звук отключен";
                 labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
+
+                отключитьЗвукToolStripMenuItem.Text = "Включить звук";
+                notifyIconDefault.Text = "Microffer - звук отключен";
 
                 buttonSoundOff.Text = "Включить";
             }
         }
+        
+        // Поиск службы Audiosrv
         private static Func<ServiceController, bool> ServiceHandler()
         {
             return svc => svc.ServiceName == "Audiosrv";
@@ -156,6 +173,46 @@ namespace Microffer
         private void microfferToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Show();
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void отключитьЗвукToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
+
+            if (serviceControllerAudio.Status.Equals(ServiceControllerStatus.Running))
+            {
+                serviceControllerAudio.Stop();
+
+                отключитьЗвукToolStripMenuItem.Text = "Включить звук";
+                notifyIconDefault.Text = "Microffer - звук отключен";
+
+                отключитьЗвукToolStripMenuItem.Click -= new EventHandler(отключитьЗвукToolStripMenuItem_Click);
+                отключитьЗвукToolStripMenuItem.Click += new EventHandler(отключитьЗвукToolStripMenuItem_SecondClick);
+            }
+            else
+            {
+                serviceControllerAudio.Start();
+
+                отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+                notifyIconDefault.Text = "Microffer - звук включен";
+            }
+        }
+
+        private void отключитьЗвукToolStripMenuItem_SecondClick(object sender, EventArgs e)
+        {
+            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
+
+            if (serviceControllerAudio.Status.Equals(ServiceControllerStatus.Stopped))
+            {
+                serviceControllerAudio.Start();
+
+                отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+                notifyIconDefault.Text = "Microffer - звук включен";
+
+                отключитьЗвукToolStripMenuItem.Click += new EventHandler(отключитьЗвукToolStripMenuItem_Click);
+                отключитьЗвукToolStripMenuItem.Click -= new EventHandler(отключитьЗвукToolStripMenuItem_SecondClick);
+            }
         }
         #endregion
 
@@ -173,7 +230,7 @@ namespace Microffer
                 serviceControllerAudio.Stop();
 
                 buttonSoundOff.Text = "Включить";
-                labelAudioStatus.Text = "Звук выключен";
+                labelAudioStatus.Text = "Звук отключен";
                 labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
 
                 buttonSoundOff.Click -= new EventHandler(buttonSoundOff_Click);
@@ -183,7 +240,7 @@ namespace Microffer
             {
                 serviceControllerAudio.Start();
 
-                buttonSoundOff.Text = "Выключить";
+                buttonSoundOff.Text = "Отключить";
                 labelAudioStatus.Text = "Звук включен";
                 labelAudioStatus.ForeColor = Color.DarkGreen;
             }
@@ -197,7 +254,7 @@ namespace Microffer
             {
                 serviceControllerAudio.Start();
 
-                buttonSoundOff.Text = "Выключить";
+                buttonSoundOff.Text = "Отключить";
                 labelAudioStatus.Text = "Звук включен";
                 labelAudioStatus.ForeColor = Color.DarkGreen;
 
@@ -205,14 +262,12 @@ namespace Microffer
                 buttonSoundOff.Click -= new EventHandler(buttonSoundOff_SecondClick);
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
-
-            label2.Text = serviceControllerAudio.Status.ToString();
-        }
         #endregion
 
+        private void labelSettings_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FormSettings"] == null)
+                new FormSettings().Show();
+        }
     }
 }

@@ -39,12 +39,11 @@
             this.notifyIconDefault = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.microfferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отключитьЗвукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSoundOff = new System.Windows.Forms.Button();
             this.labelAudioStatus = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +86,7 @@
             this.labelSettings.TabIndex = 3;
             this.labelSettings.Text = "⛭";
             this.labelSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSettings.Click += new System.EventHandler(this.labelSettings_Click);
             this.labelSettings.MouseEnter += new System.EventHandler(this.labelSettings_MouseEnter);
             this.labelSettings.MouseLeave += new System.EventHandler(this.labelSettings_MouseLeave);
             // 
@@ -150,22 +150,30 @@
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.microfferToolStripMenuItem,
+            this.отключитьЗвукToolStripMenuItem,
             this.оПрограммеToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(139, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(160, 92);
             // 
             // microfferToolStripMenuItem
             // 
             this.microfferToolStripMenuItem.Name = "microfferToolStripMenuItem";
-            this.microfferToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.microfferToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.microfferToolStripMenuItem.Text = "Microffer";
             this.microfferToolStripMenuItem.Click += new System.EventHandler(this.microfferToolStripMenuItem_Click);
+            // 
+            // отключитьЗвукToolStripMenuItem
+            // 
+            this.отключитьЗвукToolStripMenuItem.Name = "отключитьЗвукToolStripMenuItem";
+            this.отключитьЗвукToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+            this.отключитьЗвукToolStripMenuItem.Click += new System.EventHandler(this.отключитьЗвукToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -176,7 +184,7 @@
             this.выходToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.выходToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.выходToolStripMenuItem.Text = "Закрыть";
             this.выходToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
@@ -187,7 +195,7 @@
             this.buttonSoundOff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSoundOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSoundOff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.buttonSoundOff.Location = new System.Drawing.Point(100, 76);
+            this.buttonSoundOff.Location = new System.Drawing.Point(100, 68);
             this.buttonSoundOff.Name = "buttonSoundOff";
             this.buttonSoundOff.Size = new System.Drawing.Size(75, 23);
             this.buttonSoundOff.TabIndex = 1;
@@ -203,43 +211,25 @@
             this.labelAudioStatus.BackColor = System.Drawing.Color.Transparent;
             this.labelAudioStatus.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAudioStatus.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelAudioStatus.Location = new System.Drawing.Point(82, 44);
+            this.labelAudioStatus.Location = new System.Drawing.Point(82, 36);
             this.labelAudioStatus.Name = "labelAudioStatus";
             this.labelAudioStatus.Size = new System.Drawing.Size(110, 19);
             this.labelAudioStatus.TabIndex = 2;
             this.labelAudioStatus.Text = "Звук включен";
             this.labelAudioStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(13, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 134);
-            this.label2.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
-            this.ClientSize = new System.Drawing.Size(275, 133);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(275, 126);
             this.Controls.Add(this.labelAudioStatus);
             this.Controls.Add(this.buttonSoundOff);
             this.Controls.Add(this.panelHeader);
-            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
@@ -270,10 +260,9 @@
         private System.Windows.Forms.ToolStripMenuItem microfferToolStripMenuItem;
         private System.Windows.Forms.Button buttonSoundOff;
         private System.Windows.Forms.Label labelAudioStatus;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelSettings;
         private System.Windows.Forms.Label labelCopy;
+        private System.Windows.Forms.ToolStripMenuItem отключитьЗвукToolStripMenuItem;
     }
 }
 

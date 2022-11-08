@@ -13,6 +13,7 @@ namespace Microffer
             return taken = mutex.WaitOne(0, true);
         }
 
+        // Освбождение памяти
         public static void ReleaseMemory()
         {
             if (taken)
