@@ -30,7 +30,7 @@ namespace Microffer
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor <= 1)
                 labelExit.Text = "☓";
 
-            labelVersion.Text = $"Версия: {Assembly.GetExecutingAssembly().GetName().Version}";
+            labelVersionNum.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         #region [ Label events ]

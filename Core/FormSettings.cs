@@ -37,7 +37,7 @@ namespace Microffer.Core
             {
                 checkBoxHotkey.Checked = true;
                 textBox.Enabled = true;
-                labelKey.ForeColor = Color.FromArgb(115, 185, 245);
+                labelKey.ForeColor = Color.FromArgb(43, 82, 120);
 
                 openedRegistryKey.Close();
             }
@@ -82,7 +82,7 @@ namespace Microffer.Core
             else
             {
                 textBox.Enabled = true;
-                labelKey.ForeColor = Color.FromArgb(115, 185, 245);
+                labelKey.ForeColor = Color.FromArgb(43, 82, 120);
             }
         }
 
@@ -121,8 +121,6 @@ namespace Microffer.Core
             }
 
             Close();
-            
         }
-
     }
 }

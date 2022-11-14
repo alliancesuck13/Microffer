@@ -114,7 +114,7 @@
             // 
             this.checkBoxHotkey.AutoSize = true;
             this.checkBoxHotkey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
+            this.checkBoxHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(82)))), ((int)(((byte)(120)))));
             this.checkBoxHotkey.Location = new System.Drawing.Point(7, 31);
             this.checkBoxHotkey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.checkBoxHotkey.Name = "checkBoxHotkey";
