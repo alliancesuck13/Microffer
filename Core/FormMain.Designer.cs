@@ -44,8 +44,6 @@
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSoundOff = new System.Windows.Forms.Button();
             this.labelAudioStatus = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelStatus = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -220,34 +218,12 @@
             this.labelAudioStatus.Text = "Звук включен";
             this.labelAudioStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(14, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // labelStatus
-            // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelStatus.Location = new System.Drawing.Point(34, 73);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(35, 13);
-            this.labelStatus.TabIndex = 4;
-            this.labelStatus.Text = "label1";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(275, 126);
-            this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.labelAudioStatus);
             this.Controls.Add(this.buttonSoundOff);
             this.Controls.Add(this.panelHeader);
@@ -288,8 +264,6 @@
         private System.Windows.Forms.Label labelSettings;
         private System.Windows.Forms.Label labelCopy;
         private System.Windows.Forms.ToolStripMenuItem отключитьЗвукToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelStatus;
     }
 }
 

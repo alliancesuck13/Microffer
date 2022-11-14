@@ -53,14 +53,12 @@ namespace Microffer
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor <= 1)
                 labelExit.Text = "☓";
 
-            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
-            if (serviceControllerAudio.Status.ToString() == "Running")
+            if (audioChecker.GetAudioStatus() == true)
             {
                 labelAudioStatus.Text = "Звук включен";
                 notifyIconDefault.Text = "Microffer - звук включен";
-
             }
-            else
+            if (audioChecker.GetAudioStatus() == false)
             {
                 labelAudioStatus.Text = "Звук отключен";
                 labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
@@ -70,12 +68,6 @@ namespace Microffer
 
                 buttonSoundOff.Text = "Включить";
             }
-        }
-
-        // Поиск службы Audiosrv
-        private static Func<ServiceController, bool> ServiceHandler()
-        {
-            return svc => svc.ServiceName == "Audiosrv";
         }
 
         #region [ Label events ]
@@ -141,8 +133,7 @@ namespace Microffer
 
             if (e.KeyValue == (char)Keys.Multiply)
             {
-                ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
-                serviceControllerAudio.Stop();
+                audioChecker.GetServiceController().Stop();
             }
         }
 
@@ -192,37 +183,62 @@ namespace Microffer
 
         private void отключитьЗвукToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
-
-            if (serviceControllerAudio.Status.Equals(ServiceControllerStatus.Running))
+            if (audioChecker.GetAudioStatus() == true)
             {
-                serviceControllerAudio.Stop();
+                audioChecker.GetServiceController().Stop();
 
                 отключитьЗвукToolStripMenuItem.Text = "Включить звук";
                 notifyIconDefault.Text = "Microffer - звук отключен";
+
+                buttonSoundOff.Text = "Включить";
+                labelAudioStatus.Text = "Звук отключен";
+                labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
 
                 отключитьЗвукToolStripMenuItem.Click -= new EventHandler(отключитьЗвукToolStripMenuItem_Click);
                 отключитьЗвукToolStripMenuItem.Click += new EventHandler(отключитьЗвукToolStripMenuItem_SecondClick);
             }
             else
             {
-                serviceControllerAudio.Start();
+                audioChecker.GetServiceController().Start();
 
                 отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
                 notifyIconDefault.Text = "Microffer - звук включен";
+
+                buttonSoundOff.Text = "Отключить";
+                labelAudioStatus.Text = "Звук включен";
+                labelAudioStatus.ForeColor = Color.DarkGreen;
+
+                отключитьЗвукToolStripMenuItem.Click -= new EventHandler(отключитьЗвукToolStripMenuItem_Click);
+                отключитьЗвукToolStripMenuItem.Click += new EventHandler(отключитьЗвукToolStripMenuItem_SecondClick);
             }
         }
 
         private void отключитьЗвукToolStripMenuItem_SecondClick(object sender, EventArgs e)
         {
-            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
-
-            if (serviceControllerAudio.Status.Equals(ServiceControllerStatus.Stopped))
+            if (audioChecker.GetAudioStatus() == false)
             {
-                serviceControllerAudio.Start();
+                audioChecker.GetServiceController().Start();
 
                 отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
                 notifyIconDefault.Text = "Microffer - звук включен";
+
+                buttonSoundOff.Text = "Отключить";
+                labelAudioStatus.Text = "Звук включен";
+                labelAudioStatus.ForeColor = Color.DarkGreen;
+
+                отключитьЗвукToolStripMenuItem.Click += new EventHandler(отключитьЗвукToolStripMenuItem_Click);
+                отключитьЗвукToolStripMenuItem.Click -= new EventHandler(отключитьЗвукToolStripMenuItem_SecondClick);
+            }
+            else
+            {
+                audioChecker.GetServiceController().Stop();
+
+                отключитьЗвукToolStripMenuItem.Text = "Включить звук";
+                notifyIconDefault.Text = "Microffer - звук отключен";
+
+                buttonSoundOff.Text = "Включить";
+                labelAudioStatus.Text = "Звук отключен";
+                labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
 
                 отключитьЗвукToolStripMenuItem.Click += new EventHandler(отключитьЗвукToolStripMenuItem_Click);
                 отключитьЗвукToolStripMenuItem.Click -= new EventHandler(отключитьЗвукToolStripMenuItem_SecondClick);
@@ -237,62 +253,51 @@ namespace Microffer
         }
         private void buttonSoundOff_Click(object sender, EventArgs e)
         {
-            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
 
-            if (serviceControllerAudio.Status.Equals(ServiceControllerStatus.Running))
+            if (audioChecker.GetAudioStatus() == true)
             {
-                serviceControllerAudio.Stop();
+                audioChecker.GetServiceController().Stop();
 
                 buttonSoundOff.Text = "Включить";
                 labelAudioStatus.Text = "Звук отключен";
                 labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
+
+                отключитьЗвукToolStripMenuItem.Text = "Включить звук";
+                notifyIconDefault.Text = "Microffer - звук отключен";
 
                 buttonSoundOff.Click -= new EventHandler(buttonSoundOff_Click);
                 buttonSoundOff.Click += new EventHandler(buttonSoundOff_SecondClick);
             }
             else
             {
-                serviceControllerAudio.Start();
+                audioChecker.GetServiceController().Start();
 
                 buttonSoundOff.Text = "Отключить";
                 labelAudioStatus.Text = "Звук включен";
                 labelAudioStatus.ForeColor = Color.DarkGreen;
+
+                отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+                notifyIconDefault.Text = "Microffer - звук включен";
             }
         }
 
         private void buttonSoundOff_SecondClick(object sender, EventArgs e)
         {
-            ServiceController serviceControllerAudio = ServiceController.GetServices().Single(ServiceHandler());
-
-            if (serviceControllerAudio.Status.Equals(ServiceControllerStatus.Stopped))
+            if (audioChecker.GetAudioStatus() == false)
             {
-                serviceControllerAudio.Start();
+                audioChecker.GetServiceController().Start();
 
                 buttonSoundOff.Text = "Отключить";
                 labelAudioStatus.Text = "Звук включен";
                 labelAudioStatus.ForeColor = Color.DarkGreen;
 
+                отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+                notifyIconDefault.Text = "Microffer - звук включен";
+
                 buttonSoundOff.Click += new EventHandler(buttonSoundOff_Click);
                 buttonSoundOff.Click -= new EventHandler(buttonSoundOff_SecondClick);
-
             }
-            // TODO: Optimize this code
-            // var svc = ServiceController.GetServices().Single(x => x.ServiceName == "имя_службы");
-            // svc.Stop();  
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            if (audioChecker.GetAudioStatus())
-            {
-                labelStatus.Text = "true";
-            }
-            else if (!audioChecker.GetAudioStatus())
-            {
-                labelStatus.Text = "false";    
-            }
-        }
     }
 }
