@@ -166,6 +166,7 @@
             this.Controls.Add(this.labelAutor);
             this.Controls.Add(this.labelTextAbout);
             this.Controls.Add(this.panelHeader);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

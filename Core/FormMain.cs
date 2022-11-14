@@ -1,4 +1,5 @@
 ﻿using Microffer.Core;
+using Microffer.Core.Checkers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,6 +11,7 @@ namespace Microffer
 {
     public partial class FormMain : FormShadow
     {
+        AudioChecker audioChecker = new AudioChecker();
 
         public FormMain()
         {
@@ -272,9 +274,25 @@ namespace Microffer
 
                 buttonSoundOff.Click += new EventHandler(buttonSoundOff_Click);
                 buttonSoundOff.Click -= new EventHandler(buttonSoundOff_SecondClick);
+
             }
+            // TODO: Optimize this code
+            // var svc = ServiceController.GetServices().Single(x => x.ServiceName == "имя_службы");
+            // svc.Stop();  
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (audioChecker.GetAudioStatus())
+            {
+                labelStatus.Text = "true";
+            }
+            else if (!audioChecker.GetAudioStatus())
+            {
+                labelStatus.Text = "false";    
+            }
+        }
     }
 }

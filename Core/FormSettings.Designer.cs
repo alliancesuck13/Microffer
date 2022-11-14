@@ -177,6 +177,7 @@
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.checkBoxHotkey);
             this.Controls.Add(this.panelHeader);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
