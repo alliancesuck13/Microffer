@@ -17,7 +17,6 @@ namespace Microffer.Core.Checkers
         }
         public bool GetAudioStatus()
         {
-
             bool result = true;
             if (GetServiceController().Status.Equals(ServiceControllerStatus.Stopped))
             {

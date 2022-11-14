@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Microffer.Core.Checkers;
 
 namespace Microffer.Core
 {
     public partial class FormSettings : FormShadow
     {
-        RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microffer\Hotkey");
+        static RegistryChecker registryChecker = new RegistryChecker();
+        RegistryKey openedRegistryKey = registryChecker.OpenRegistryKey("Software\\Microffer\\Hotkey");
+        RegistryKey createdRegistryKey = registryChecker.CreateRegistryKey("Software\\Microffer\\Hotkey");
 
         public FormSettings()
         {
@@ -16,11 +19,11 @@ namespace Microffer.Core
 
             FormPaint(Color.FromArgb(14, 22, 33), Color.FromArgb(14, 22, 33));
 
-            new List<Control> { labelHeader, panelHeader }.ForEach(x =>
+            new List<Control> { labelHeader, panelHeader }.ForEach(control =>
             {
-                x.MouseDown += (s, a) =>
+                control.MouseDown += (s, a) =>
                 {
-                    x.Capture = false;
+                    control.Capture = false;
                     Capture = false;
                     Message m = Message.Create(Handle, 0xA1, new IntPtr(2), IntPtr.Zero);
                     base.WndProc(ref m);
@@ -30,21 +33,25 @@ namespace Microffer.Core
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor <= 1)
                 labelExit.Text = "☓";
 
-            if (key.GetValue("UseHotkeys")?.ToString() == "true")
+            if (openedRegistryKey?.GetValue("UseHotkeys")?.ToString() == "true")
             {
                 checkBoxHotkey.Checked = true;
                 textBox.Enabled = true;
                 labelKey.ForeColor = Color.FromArgb(115, 185, 245);
+
+                openedRegistryKey.Close();
             }
-            else if (key.GetValue("UseHotkeys")?.ToString() == "false")
+            else if (openedRegistryKey?.GetValue("UseHotkeys")?.ToString() == "false")
             {
                 checkBoxHotkey.Checked = false;
                 textBox.Enabled = false;
                 labelKey.ForeColor = Color.FromArgb(118, 140, 158);
+
+                openedRegistryKey.Close();
             }
             else
             {
-                key.SetValue("UseHotkeys", "false");
+                createdRegistryKey.SetValue("UseHotkeys", "false");
             }
         }
 
@@ -89,23 +96,33 @@ namespace Microffer.Core
 
         private void buttonAccept_Click(object sender, EventArgs e)
         {
-            if (key != null)
+            try
             {
-                if (checkBoxHotkey.Checked)
+                if (registryChecker.CheckExistingKey("Software\\Microffer"))
                 {
-                    key?.SetValue("UseHotkeys", "true");
+                    if (checkBoxHotkey.Checked)
+                    {
+                        createdRegistryKey?.SetValue("UseHotkeys", "true");
+                    }
+                    else
+                    {
+                        createdRegistryKey?.SetValue("UseHotkeys", "false");
+                    }
                 }
                 else
                 {
-                    key?.SetValue("UseHotkeys", "false");
+                    createdRegistryKey?.SetValue("UseHotkeys", "false");
                 }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                key?.CreateSubKey(@"Software\Microffer\Hotkey")?.SetValue("UseHotkeys", "false");
+                MessageBox.Show("Дебил ебаный, хватит ломать программу");
+                Close();
             }
 
             Close();
+            
         }
+
     }
 }

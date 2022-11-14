@@ -134,9 +134,9 @@
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelVersion.Location = new System.Drawing.Point(126, 77);
+            this.labelVersion.Location = new System.Drawing.Point(109, 80);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(71, 20);
+            this.labelVersion.Size = new System.Drawing.Size(87, 14);
             this.labelVersion.TabIndex = 4;
             this.labelVersion.Text = "Версия: 0.8a";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

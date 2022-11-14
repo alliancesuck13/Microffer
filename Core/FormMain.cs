@@ -3,8 +3,6 @@ using Microffer.Core.Checkers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.ServiceProcess;
 using System.Windows.Forms;
 
 namespace Microffer
@@ -38,11 +36,11 @@ namespace Microffer
             FormPaint(Color.FromArgb(14, 22, 33), Color.FromArgb(14, 22, 33));
 
             // Перетаскивание панели и лейбла
-            new List<Control> { panelHeader, labelCopy }.ForEach(x =>
+            new List<Control> { panelHeader, labelCopy }.ForEach(control =>
             {
-                x.MouseDown += (s, a) =>
+                control.MouseDown += (s, a) =>
                 {
-                    x.Capture = false;
+                    control.Capture = false;
                     Capture = false;
                     Message m = Message.Create(Handle, 0xA1, new IntPtr(2), IntPtr.Zero);
                     base.WndProc(ref m);
