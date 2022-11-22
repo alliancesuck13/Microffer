@@ -71,7 +71,7 @@
             this.labelLeaveSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelLeaveSettings.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelLeaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(114)))));
-            this.labelLeaveSettings.Location = new System.Drawing.Point(206, 4);
+            this.labelLeaveSettings.Location = new System.Drawing.Point(211, 4);
             this.labelLeaveSettings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLeaveSettings.Name = "labelLeaveSettings";
             this.labelLeaveSettings.Size = new System.Drawing.Size(19, 16);
@@ -150,7 +150,8 @@
             this.textBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox.MaxLength = 1;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(23, 21);
+            this.textBox.ReadOnly = true;
+            this.textBox.Size = new System.Drawing.Size(59, 21);
             this.textBox.TabIndex = 5;
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -159,7 +160,7 @@
             this.labelKey.AutoSize = true;
             this.labelKey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelKey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelKey.Location = new System.Drawing.Point(34, 60);
+            this.labelKey.Location = new System.Drawing.Point(68, 60);
             this.labelKey.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelKey.Name = "labelKey";
             this.labelKey.Size = new System.Drawing.Size(52, 13);
@@ -174,7 +175,7 @@
             this.labelQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelQuestion.Font = new System.Drawing.Font("Verdana", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelQuestion.Location = new System.Drawing.Point(82, 60);
+            this.labelQuestion.Location = new System.Drawing.Point(115, 60);
             this.labelQuestion.Name = "labelQuestion";
             this.labelQuestion.Size = new System.Drawing.Size(9, 10);
             this.labelQuestion.TabIndex = 7;

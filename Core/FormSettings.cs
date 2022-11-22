@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Microffer.Core.Checkers;
 
@@ -53,7 +54,124 @@ namespace Microffer.Core
             {
                 createdRegistryKey.SetValue("UseHotkeys", "false");
             }
+
+            switch (textBox.Text)
+            {
+                case " ":
+                    MessageBox.Show("Test");
+                    break;
+
+                default:
+                    KeyDown += (s, a) =>
+                    {
+                        switch (a.KeyData)
+                        {
+                            case Keys.Up:
+                                textBox.Text = "Up";
+                                break;
+
+                            case Keys.Down:
+                                textBox.Text = "Down";
+                                break;
+
+                            case Keys.Left:
+                                textBox.Text = "Left";
+                                break;
+
+                            case Keys.Right:
+                                textBox.Text = "Right";
+                                break;
+
+                            case Keys.Home:
+                                textBox.Text = "Home";
+                                break;
+
+                            case Keys.PageUp:
+                                textBox.Text = "PageUp";
+                                break;
+
+                            case Keys.PageDown:
+                                textBox.Text = "PageDown";
+                                break;
+
+                            case Keys.NumPad0:
+                                textBox.Text = "NumPad0";
+                                break;
+
+                            case Keys.NumPad1:
+                                textBox.Text = "NumPad1";
+                                break;
+
+                            case Keys.NumPad2:
+                                textBox.Text = "NumPad2";
+                                break;
+
+                            case Keys.NumPad3:
+                                textBox.Text = "NumPad3";
+                                break;
+
+                            case Keys.NumPad4:
+                                textBox.Text = "NumPad4";
+                                break;
+
+                            case Keys.NumPad5:
+                                textBox.Text = "NumPad5";
+                                break;
+
+                            case Keys.NumPad6:
+                                textBox.Text = "NumPad6";
+                                break;
+
+                            case Keys.NumPad7:
+                                textBox.Text = "NumPad7";
+                                break;
+
+                            case Keys.NumPad8:
+                                textBox.Text = "NumPad8";
+                                break;
+
+                            case Keys.NumPad9:
+                                textBox.Text = "NumPad9";
+                                break;
+                                // -
+                            case Keys.Subtract:
+                                textBox.Text = "Subtract";
+                                break;
+
+                            case Keys.Multiply:
+                                textBox.Text = "Multiply";
+                                break;
+                                // /
+                            case Keys.Divide:
+                                textBox.Text = "Divide";
+                                break;
+
+                            case Keys.NumLock:
+                                textBox.Text = "NumLock";
+                                break;
+
+                            case Keys.F10:
+                                textBox.Text = "F10";
+                                break;
+
+                            case Keys.F9:
+                                textBox.Text = "F9";
+                                break;
+                        }
+                    };
+                    break;
+            }
+
+            if (registryChecker.CheckExistingKey("Software\\Microffer\\Hotkey") != false)
+            {
+                textBox.Text = createdRegistryKey?.GetValue("Hotkey")?.ToString();
+            }
+            else
+            {
+                createdRegistryKey?.SetValue("Hotkey", string.Empty);
+            }
         }
+
 
         #region [ Label events ]
         private void labelLeaveSettings_Click(object sender, EventArgs e)
@@ -96,17 +214,15 @@ namespace Microffer.Core
 
         private void buttonAccept_Click(object sender, EventArgs e)
         {
-            try
+            if (registryChecker.CheckExistingKey("Software\\Microffer"))
             {
-                if (registryChecker.CheckExistingKey("Software\\Microffer"))
+                if (checkBoxHotkey.Checked)
                 {
-                    if (checkBoxHotkey.Checked)
+                    createdRegistryKey?.SetValue("UseHotkeys", "true");
+
+                    if (textBox != null)
                     {
-                        createdRegistryKey?.SetValue("UseHotkeys", "true");
-                    }
-                    else
-                    {
-                        createdRegistryKey?.SetValue("UseHotkeys", "false");
+                        createdRegistryKey?.SetValue("Hotkey", textBox.Text);
                     }
                 }
                 else
@@ -114,10 +230,10 @@ namespace Microffer.Core
                     createdRegistryKey?.SetValue("UseHotkeys", "false");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Дебил ебаный, хватит ломать программу \n\n" + ex, ex.Source);
-                Close();
+                createdRegistryKey?.SetValue("UseHotkeys", "false");
+                createdRegistryKey?.SetValue("Hotkey", string.Empty);
             }
 
             Close();

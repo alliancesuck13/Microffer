@@ -18,7 +18,7 @@ namespace Microffer
             InitializeComponent();
 
             // Global Key hook
-            keyboardHook.HookedKeys.Add(Keys.M);
+            keyboardHook.HookedKeys.Add(Keys.NumPad0);
             keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
 
             // Реализация mutex
@@ -76,21 +76,69 @@ namespace Microffer
 
         void KeyboardHook_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.M)
+            if (e.KeyCode == Keys.NumPad0)
             {
-                audioChecker.GetServiceController().Stop();
+                if (audioChecker.GetAudioStatus() == true)
+                {
+                    audioChecker.GetServiceController().Stop();
 
-                keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
-                keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp);
+                    keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
+                    keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp);
+
+                    отключитьЗвукToolStripMenuItem.Text = "Включить звук";
+                    notifyIconDefault.Text = "Microffer - звук отключен";
+
+                    buttonSoundOff.Text = "Включить";
+                    labelAudioStatus.Text = "Звук отключен";
+                    labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
+                }
+                else
+                {
+                    audioChecker.GetServiceController().Start();
+
+                    keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
+                    keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp);
+
+                    отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+                    notifyIconDefault.Text = "Microffer - звук включен";
+
+                    buttonSoundOff.Text = "Отключить";
+                    labelAudioStatus.Text = "Звук включен";
+                    labelAudioStatus.ForeColor = Color.DarkGreen;
+                }
             }
         }
 
         void KeyboardHook_KeyUp_SecondClick(object sender, KeyEventArgs e)
         {
-            audioChecker.GetServiceController().Start();
+            if (audioChecker.GetAudioStatus() == false)
+            {
+                audioChecker.GetServiceController().Start();
 
-            keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
-            keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
+                keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
+                keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
+
+                отключитьЗвукToolStripMenuItem.Text = "Отключить звук";
+                notifyIconDefault.Text = "Microffer - звук включен";
+
+                buttonSoundOff.Text = "Отключить";
+                labelAudioStatus.Text = "Звук включен";
+                labelAudioStatus.ForeColor = Color.DarkGreen;
+            }
+            else
+            {
+                audioChecker.GetServiceController().Stop();
+
+                keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
+                keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
+
+                отключитьЗвукToolStripMenuItem.Text = "Включить звук";
+                notifyIconDefault.Text = "Microffer - звук отключен";
+
+                buttonSoundOff.Text = "Включить";
+                labelAudioStatus.Text = "Звук отключен";
+                labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
+            }
         }
 
         #region [ Label events ]
