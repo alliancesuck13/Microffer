@@ -38,6 +38,7 @@
             this.labelAutor = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelAuthorName = new System.Windows.Forms.Label();
+            this.labelVersionNum = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,7 +110,7 @@
             // 
             this.labelTextAbout.BackColor = System.Drawing.Color.Transparent;
             this.labelTextAbout.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTextAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
+            this.labelTextAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(82)))), ((int)(((byte)(120)))));
             this.labelTextAbout.Location = new System.Drawing.Point(14, 28);
             this.labelTextAbout.Name = "labelTextAbout";
             this.labelTextAbout.Size = new System.Drawing.Size(173, 44);
@@ -134,11 +135,11 @@
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelVersion.Location = new System.Drawing.Point(126, 77);
+            this.labelVersion.Location = new System.Drawing.Point(126, 81);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(71, 20);
+            this.labelVersion.Size = new System.Drawing.Size(87, 13);
             this.labelVersion.TabIndex = 4;
-            this.labelVersion.Text = "Версия: 0.8a";
+            this.labelVersion.Text = "Версия:";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelAuthorName
@@ -146,7 +147,7 @@
             this.labelAuthorName.BackColor = System.Drawing.Color.Transparent;
             this.labelAuthorName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelAuthorName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAuthorName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
+            this.labelAuthorName.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.labelAuthorName.Location = new System.Drawing.Point(43, 77);
             this.labelAuthorName.Name = "labelAuthorName";
             this.labelAuthorName.Size = new System.Drawing.Size(37, 20);
@@ -155,17 +156,31 @@
             this.labelAuthorName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelAuthorName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.labelAuthorName_MouseClick);
             // 
+            // labelVersionNum
+            // 
+            this.labelVersionNum.BackColor = System.Drawing.Color.Transparent;
+            this.labelVersionNum.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelVersionNum.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.labelVersionNum.Location = new System.Drawing.Point(168, 80);
+            this.labelVersionNum.Name = "labelVersionNum";
+            this.labelVersionNum.Size = new System.Drawing.Size(47, 14);
+            this.labelVersionNum.TabIndex = 6;
+            this.labelVersionNum.Text = "num";
+            this.labelVersionNum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FormAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(200, 100);
+            this.Controls.Add(this.labelVersionNum);
             this.Controls.Add(this.labelAuthorName);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.labelAutor);
             this.Controls.Add(this.labelTextAbout);
             this.Controls.Add(this.panelHeader);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -191,5 +206,6 @@
         private System.Windows.Forms.Label labelAutor;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelAuthorName;
+        private System.Windows.Forms.Label labelVersionNum;
     }
 }

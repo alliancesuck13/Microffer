@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
-
 
 namespace Microffer
 {
@@ -15,11 +15,11 @@ namespace Microffer
 
             FormPaint(Color.FromArgb(14, 22, 33), Color.FromArgb(14, 22, 33));
 
-            new List<Control> { labelHeader, panelHeader }.ForEach(x =>
+            new List<Control> { labelHeader, panelHeader, labelTextAbout }.ForEach(control =>
             {
-                x.MouseDown += (s, a) =>
+                control.MouseDown += (s, a) =>
                 {
-                    x.Capture = false;
+                    control.Capture = false;
                     Capture = false;
                     Message m = Message.Create(Handle, 0xA1, new IntPtr(2), IntPtr.Zero);
                     base.WndProc(ref m);
@@ -28,6 +28,8 @@ namespace Microffer
 
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor <= 1)
                 labelExit.Text = "☓";
+
+            labelVersionNum.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString(2);
         }
 
         #region [ Label events ]

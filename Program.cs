@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Microffer
@@ -13,7 +14,14 @@ namespace Microffer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Global exception
+            Application.ThreadException += new ThreadExceptionEventHandler(Exception);
             Application.Run(new FormMain());
+        }
+
+        static void Exception(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.ToString(), e.Exception.Message);
         }
     }
 }

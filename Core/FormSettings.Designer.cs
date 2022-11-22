@@ -38,6 +38,7 @@
             this.buttonAccept = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.labelKey = new System.Windows.Forms.Label();
+            this.labelQuestion = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             this.labelLeaveSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelLeaveSettings.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelLeaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(114)))));
-            this.labelLeaveSettings.Location = new System.Drawing.Point(206, 4);
+            this.labelLeaveSettings.Location = new System.Drawing.Point(211, 4);
             this.labelLeaveSettings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLeaveSettings.Name = "labelLeaveSettings";
             this.labelLeaveSettings.Size = new System.Drawing.Size(19, 16);
@@ -114,7 +115,7 @@
             // 
             this.checkBoxHotkey.AutoSize = true;
             this.checkBoxHotkey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(185)))), ((int)(((byte)(245)))));
+            this.checkBoxHotkey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(82)))), ((int)(((byte)(120)))));
             this.checkBoxHotkey.Location = new System.Drawing.Point(7, 31);
             this.checkBoxHotkey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.checkBoxHotkey.Name = "checkBoxHotkey";
@@ -149,7 +150,8 @@
             this.textBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox.MaxLength = 1;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(23, 21);
+            this.textBox.ReadOnly = true;
+            this.textBox.Size = new System.Drawing.Size(59, 21);
             this.textBox.TabIndex = 5;
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -158,13 +160,27 @@
             this.labelKey.AutoSize = true;
             this.labelKey.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelKey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelKey.Location = new System.Drawing.Point(34, 60);
+            this.labelKey.Location = new System.Drawing.Point(68, 60);
             this.labelKey.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelKey.Name = "labelKey";
             this.labelKey.Size = new System.Drawing.Size(52, 13);
             this.labelKey.TabIndex = 6;
             this.labelKey.Text = "Клавиша";
             this.labelKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelKey.Click += new System.EventHandler(this.labelKey_Click);
+            // 
+            // labelQuestion
+            // 
+            this.labelQuestion.AutoSize = true;
+            this.labelQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelQuestion.Font = new System.Drawing.Font("Verdana", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
+            this.labelQuestion.Location = new System.Drawing.Point(115, 60);
+            this.labelQuestion.Name = "labelQuestion";
+            this.labelQuestion.Size = new System.Drawing.Size(9, 10);
+            this.labelQuestion.TabIndex = 7;
+            this.labelQuestion.Text = "?";
+            this.labelQuestion.Click += new System.EventHandler(this.labelQuestion_Click);
             // 
             // FormSettings
             // 
@@ -172,11 +188,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(233, 100);
+            this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelKey);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.checkBoxHotkey);
             this.Controls.Add(this.panelHeader);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -206,5 +224,6 @@
         private System.Windows.Forms.Button buttonAccept;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label labelKey;
+        private System.Windows.Forms.Label labelQuestion;
     }
 }
