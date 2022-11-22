@@ -1,5 +1,6 @@
 ﻿using Microffer.Core;
 using Microffer.Core.Checkers;
+using Microffer.Core.KeyboardListener;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,10 +11,15 @@ namespace Microffer
     public partial class FormMain : FormShadow
     {
         AudioChecker audioChecker = new AudioChecker();
+        KeyboardHook keyboardHook = new KeyboardHook();
 
         public FormMain()
         {
             InitializeComponent();
+
+            // Global Key hook
+            keyboardHook.HookedKeys.Add(Keys.M);
+            keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
 
             // Реализация mutex
             if (!InstanceChecker.TakeMemory())
@@ -66,6 +72,25 @@ namespace Microffer
 
                 buttonSoundOff.Text = "Включить";
             }
+        }
+
+        void KeyboardHook_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.M)
+            {
+                audioChecker.GetServiceController().Stop();
+
+                keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
+                keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp);
+            }
+        }
+
+        void KeyboardHook_KeyUp_SecondClick(object sender, KeyEventArgs e)
+        {
+            audioChecker.GetServiceController().Start();
+
+            keyboardHook.KeyUp -= new KeyEventHandler(KeyboardHook_KeyUp_SecondClick);
+            keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
         }
 
         #region [ Label events ]

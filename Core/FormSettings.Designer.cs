@@ -38,6 +38,7 @@
             this.buttonAccept = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.labelKey = new System.Windows.Forms.Label();
+            this.labelQuestion = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,6 +166,20 @@
             this.labelKey.TabIndex = 6;
             this.labelKey.Text = "Клавиша";
             this.labelKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelKey.Click += new System.EventHandler(this.labelKey_Click);
+            // 
+            // labelQuestion
+            // 
+            this.labelQuestion.AutoSize = true;
+            this.labelQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelQuestion.Font = new System.Drawing.Font("Verdana", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
+            this.labelQuestion.Location = new System.Drawing.Point(82, 60);
+            this.labelQuestion.Name = "labelQuestion";
+            this.labelQuestion.Size = new System.Drawing.Size(9, 10);
+            this.labelQuestion.TabIndex = 7;
+            this.labelQuestion.Text = "?";
+            this.labelQuestion.Click += new System.EventHandler(this.labelQuestion_Click);
             // 
             // FormSettings
             // 
@@ -172,6 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(233, 100);
+            this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelKey);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.buttonAccept);
@@ -207,5 +223,6 @@
         private System.Windows.Forms.Button buttonAccept;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label labelKey;
+        private System.Windows.Forms.Label labelQuestion;
     }
 }

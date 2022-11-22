@@ -135,7 +135,7 @@
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(140)))), ((int)(((byte)(158)))));
-            this.labelVersion.Location = new System.Drawing.Point(112, 81);
+            this.labelVersion.Location = new System.Drawing.Point(126, 81);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(87, 13);
             this.labelVersion.TabIndex = 4;
@@ -161,7 +161,7 @@
             this.labelVersionNum.BackColor = System.Drawing.Color.Transparent;
             this.labelVersionNum.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelVersionNum.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.labelVersionNum.Location = new System.Drawing.Point(153, 80);
+            this.labelVersionNum.Location = new System.Drawing.Point(168, 80);
             this.labelVersionNum.Name = "labelVersionNum";
             this.labelVersionNum.Size = new System.Drawing.Size(47, 14);
             this.labelVersionNum.TabIndex = 6;

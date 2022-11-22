@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-
 namespace Microffer
 {
     public partial class FormAbout : FormShadow
@@ -16,7 +15,7 @@ namespace Microffer
 
             FormPaint(Color.FromArgb(14, 22, 33), Color.FromArgb(14, 22, 33));
 
-            new List<Control> { labelHeader, panelHeader }.ForEach(control =>
+            new List<Control> { labelHeader, panelHeader, labelTextAbout }.ForEach(control =>
             {
                 control.MouseDown += (s, a) =>
                 {
@@ -30,7 +29,7 @@ namespace Microffer
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor <= 1)
                 labelExit.Text = "☓";
 
-            labelVersionNum.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            labelVersionNum.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString(2);
         }
 
         #region [ Label events ]

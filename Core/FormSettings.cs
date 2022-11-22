@@ -114,13 +114,23 @@ namespace Microffer.Core
                     createdRegistryKey?.SetValue("UseHotkeys", "false");
                 }
             }
-            catch (NullReferenceException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Дебил ебаный, хватит ломать программу");
+                MessageBox.Show("Дебил ебаный, хватит ломать программу \n\n" + ex, ex.Source);
                 Close();
             }
 
             Close();
+        }
+
+        private void labelKey_Click(object sender, EventArgs e)
+        {
+            textBox.Focus();
+        }
+
+        private void labelQuestion_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,6 +5,7 @@ namespace Microffer.Core.Checkers
     internal class RegistryChecker
     {
         // "Software\Microffer\Hotkey"
+        // Todo: Hotkeys
 
         public RegistryKey CreateRegistryKey(string path)
         {
