@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using Microffer.Core.Checkers;
 
@@ -246,7 +245,11 @@ namespace Microffer.Core
 
         private void labelQuestion_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("В приложении пока что не реализована возможность изменять горячую клавишу. " +
+                "Для отключения звука необходимо нажать * на NumPad.", 
+                "Microffer", 
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.Warning);
         }
     }
 }

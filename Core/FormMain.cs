@@ -18,7 +18,7 @@ namespace Microffer
             InitializeComponent();
 
             // Global Key hook
-            keyboardHook.HookedKeys.Add(Keys.NumPad0);
+            keyboardHook.HookedKeys.Add(Keys.Multiply);
             keyboardHook.KeyUp += new KeyEventHandler(KeyboardHook_KeyUp);
 
             // Реализация mutex
@@ -76,7 +76,7 @@ namespace Microffer
 
         void KeyboardHook_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.NumPad0)
+            if (e.KeyCode == Keys.Multiply)
             {
                 if (audioChecker.GetAudioStatus() == true)
                 {
@@ -91,6 +91,9 @@ namespace Microffer
                     buttonSoundOff.Text = "Включить";
                     labelAudioStatus.Text = "Звук отключен";
                     labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
+
+                    notifyIconDefault.BalloonTipTitle = "Microffer";
+                    notifyIconDefault.BalloonTipText = "Звук отключен";
                 }
                 else
                 {
@@ -105,6 +108,9 @@ namespace Microffer
                     buttonSoundOff.Text = "Отключить";
                     labelAudioStatus.Text = "Звук включен";
                     labelAudioStatus.ForeColor = Color.DarkGreen;
+
+                    notifyIconDefault.BalloonTipTitle = "Microffer";
+                    notifyIconDefault.BalloonTipText = "Звук включен";
                 }
             }
         }
@@ -124,6 +130,9 @@ namespace Microffer
                 buttonSoundOff.Text = "Отключить";
                 labelAudioStatus.Text = "Звук включен";
                 labelAudioStatus.ForeColor = Color.DarkGreen;
+
+                notifyIconDefault.BalloonTipTitle = "Microffer";
+                notifyIconDefault.BalloonTipText = "Звук включен";
             }
             else
             {
@@ -138,6 +147,9 @@ namespace Microffer
                 buttonSoundOff.Text = "Включить";
                 labelAudioStatus.Text = "Звук отключен";
                 labelAudioStatus.ForeColor = Color.FromArgb(127, 145, 164);
+
+                notifyIconDefault.BalloonTipTitle = "Microffer";
+                notifyIconDefault.BalloonTipText = "Звук отключен";
             }
         }
 
@@ -200,11 +212,6 @@ namespace Microffer
             if (e.KeyValue == (char)Keys.Escape)
             {
                 Application.Exit();
-            }
-
-            if (e.KeyValue == (char)Keys.Multiply)
-            {
-                audioChecker.GetServiceController().Stop();
             }
         }
 
